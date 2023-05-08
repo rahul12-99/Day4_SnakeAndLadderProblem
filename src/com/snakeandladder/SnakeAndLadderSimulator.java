@@ -2,18 +2,36 @@ package com.snakeandladder;
 
 public class SnakeAndLadderSimulator {
     /*
-     * Created method for player role the dice and get number between 1 and 6 ;
+     * The main method is for Player then checks for an Option. They are No Play, Ladder or Snake.
+     *  - Use ((RANDOM)) to check for Options
      * @param args
      */
 
     public static void main(String[] args) {
         /*
-         * 1) initialization the player position and a random variable to get number 1 to 6;
+         * 1) Initialized the playerPosition and random variable for getNumber and get options for play.
+         * 2) Taking condition for no play, and ladder or snake
          */
-
+        /*
+         * 1) Initialized the playerPosition and random variable for getNumber and get options for play.
+         */
         int playerPosition = 0;
-        int playerGetNumber = (int) Math.floor(Math.random()*(6 -1 +1) + 1);
-        System.out.println("Player position is : " + playerPosition );
-        System.out.println("Player rolls the die and get " + playerGetNumber);
+        int getNumber = (int) Math.floor(Math.random() * (6 - 1 + 1) + 1);
+        int getOption = (int) Math.floor(Math.random() * (3 - 1 + 1) + 1);
+        /*
+         2) Taking condition for no play, and ladder or snake
+         */
+        switch (getOption) {
+            case 0:
+                playerPosition = playerPosition;
+                break;
+            case 1:
+                playerPosition += getNumber;
+                break;
+            case 2:
+                playerPosition -= getNumber;
+                break;
+        }
+        System.out.println(playerPosition);
     }
 }
