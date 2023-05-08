@@ -2,7 +2,7 @@ package com.snakeandladder;
 
 public class SnakeAndLadderSimulator {
     /*
-     * The main method is for Player repeat till player position reach the 100
+     * The main method is for Player repeat till player reach the exact position 100
      *  - Use ((RANDOM)) to check for Options
      * @param args
      */
@@ -12,7 +12,7 @@ public class SnakeAndLadderSimulator {
          * 1) Initialized the playerPosition and random variable for getNumber and get options for play.
          * 1.1) Taking a condition in while loop until 100
          * 2) Taking condition for no play, and ladder or snake
-         * 3) Taking condition if player position less than 0
+         * 3) Taking condition if player position less than 0 or greater than 100
          */
         /*
          * 1) Initialized the playerPosition and random variable for getNumber and get options for play.
@@ -39,10 +39,13 @@ public class SnakeAndLadderSimulator {
                     break;
             }
             /*
-             3) Taking condition if player position less than 0
+             3) Taking condition if player position less than 0 or greater than 100
              */
-            if(playerPosition < 0){
+            if (playerPosition < 0) {
                 playerPosition = 0;
+            }
+            if (playerPosition > 100){
+                playerPosition -= getNumber;
             }
         }
         System.out.println(playerPosition);
