@@ -1,61 +1,163 @@
 package com.snakeandladder;
 
+import java.util.Scanner;
+
 public class SnakeAndLadderSimulator {
-    /*
-     * The main method is for count how much times dice rolled
-     * @param args
-     */
+    final static int winningPosition = 100;
 
     public static void main(String[] args) {
-        /*
-         * 1) Initialized the playerPosition , dice roll count and random variable
-         * for getNumber and get options for play.
-         * 1.1) Taking a condition in while loop until 100 and increase the dice count
-         * 2) Taking condition for no play, and ladder or snake
-         * 3) Taking condition if player position less than 0 or greater than 100
-         * 4) Printing the player position with dice roll count and player final position
-         */
-        /*
-         * 1) Initialized the playerPosition , dice roll count and random variable
-         * for getNumber and get options for play.
-         */
-        int playerPosition = 0;
-        int diceRollCount = 0;
-        /*
-         1.1) Taking a condition in while loop until 100 and increase the dice count
-         */
-        while (playerPosition < 100) {
-            diceRollCount++;
-            int getNumber = (int) Math.floor(Math.random() * (6 - 1 + 1) + 1);
-            int getOption = (int) Math.floor(Math.random() * (3 - 1 + 1) + 1);
-        /*
-         2) Taking condition for no play, and ladder or snake
-         */
-            switch (getOption) {
-                case 0:
-                    playerPosition = playerPosition;
+        Scanner Sc = new Scanner(System.in);
+        System.out.println("Input the names of the two players:");
+        String player1 = Sc.next();
+        String player2 = Sc.next();
+        int player1position = 0;
+        int player2position = 0;
+
+        int count = 0; // For counting number of turns each player
+        int x;   // for getting random value
+
+
+        while (player1position != winningPosition && player2position != winningPosition) {
+            System.out.println();
+            // Dice Computation Getting the Random Dice
+            x = (int) Math.floor(Math.random() * (6 - 1 + 1) + 1);
+            if ((player1position + x) <= 100) {
+                player1position = x + player1position; //position update for player 1
+                System.out.println(player1 + " throws " + x);
+            }
+
+            System.out.println(player1 + " reaches to cell " + player1position);
+
+
+            switch (player1position) {   //for ladders
+                case 3:
+                    System.out.println(player1 + " reaches to base of a ladder ");
+                    player1position = 22;
+                    System.out.println(player1 + " climbs on position 22");
+                    player1position += x;
+                    System.out.println(player1 + " got a ladder and and get a chance to play again and final position is " + player1position);
                     break;
-                case 1:
-                    playerPosition += getNumber;
+                case 15:
+                    System.out.println(player1 + " reaches to base of a ladder ");
+                    player1position = 25;
+                    System.out.println(player1 + " climbs on position 25");
+                    player1position += x;
+                    System.out.println(player1 + " got a ladder and and get a chance to play again and final position is " + player1position);
                     break;
-                case 2:
-                    playerPosition -= getNumber;
+                case 34:
+                    System.out.println(player1 + " reaches to base of a ladder ");
+                    player1position = 36;
+                    System.out.println(player1 + " climbs on position 36");
+                    player1position += x;
+                    System.out.println(player1 + " got a ladder and and get a chance to play again and final position is " + player1position);
+                    break;
+                case 60:
+                    System.out.println(player1 + " reaches to base of a ladder ");
+                    player1position = 86;
+                    System.out.println(player1 + " climbs on position 86");
+                    player1position += x;
+                    System.out.println(player1 + " got a ladder and and get a chance to play again and final position is " + player1position);
+                    break;
+                //for snakes
+                case 17:
+                    System.out.println(player1 + " reaches to mouth of a snake ");
+                    player1position = 4;
+                    System.out.println(player1 + " goes down to 4");
+                    break;
+                case 39:
+                    System.out.println(player1 + " reaches to mouth of a snake ");
+                    player1position = 8;
+                    System.out.println(player1 + " goes down position 8");
+                    break;
+                case 73:
+                    System.out.println(player1 + " reaches to mouth of a snake ");
+                    player1position = 64;
+                    System.out.println(player1 + " goes down position 64");
+                    break;
+                case 97:
+                    System.out.println(player1 + " reaches to mouth of a snake ");
+                    player1position = 3;
+                    System.out.println(player1 + " goes down position 3");
+                    break;
+                default:
                     break;
             }
-            /*
-             3) Taking condition if player position less than 0 or greater than 100
-             */
-            if (playerPosition < 0) {
-                playerPosition = 0;
+            System.out.println();
+            // random dice value
+            x = (int) Math.floor(Math.random() * (6 - 1 + 1) + 1);
+            if ((player2position + x) <= 100) {
+                player2position = x + player2position;       //position update of player2
+                System.out.println(player2 + " throws " + x);
             }
-            if (playerPosition > 100){
-                playerPosition -= getNumber;
+
+            System.out.println(player2 + " reaches to cell " + player2position);
+
+
+            switch (player2position) {   //for ladders
+                case 3:
+                    System.out.println(player2 + " reaches to base of a ladder ");
+                    player2position = 22;
+                    System.out.println(player2 + " climbs on position 22");
+                    player2position += x;
+                    System.out.println(player1 + " got a ladder and and get a chance to play again and final position is " + player2position);
+                    break;
+                case 15:
+                    System.out.println(player2 + " reaches to base of a ladder ");
+                    player2position = 25;
+                    System.out.println(player2 + " climbs on position 25");
+                    player2position += x;
+                    System.out.println(player1 + " got a ladder and and get a chance to play again and final position is " + player2position);
+                    break;
+                case 34:
+                    System.out.println(player2 + " reaches to base of a ladder ");
+                    player2position = 36;
+                    System.out.println(player2 + " climbs on position 36");
+                    player2position += x;
+                    System.out.println(player1 + " got a ladder and and get a chance to play again and final position is " + player2position);
+                    break;
+                case 60:
+                    System.out.println(player2 + " reaches to base of a ladder ");
+                    player2position = 86;
+                    System.out.println(player2 + " climbs on position 48");
+                    player2position += x;
+                    System.out.println(player1 + " got a ladder and and get a chance to play again and final position is " + player2position);
+                    break;
+                //for snakes
+                case 17:
+                    System.out.println(player2 + " reaches to mouth of a snake ");
+                    player2position = 4;
+                    System.out.println(player2 + " goes down to 4");
+                    break;
+                case 39:
+                    System.out.println(player2 + " reaches to mouth of a snake ");
+                    player2position = 8;
+                    System.out.println(player2 + " goes down to 8");
+                    break;
+                case 73:
+                    System.out.println(player2 + " reaches to mouth of a snake ");
+                    player2position = 64;
+                    System.out.println(player2 + " goes down to 64");
+                    break;
+                case 97:
+                    System.out.println(player2 + " reaches to mouth of a snake ");
+                    player2position = 3;
+                    System.out.println(player2 + " goes down to 3");
+                    break;
+                default:
+                    break;
             }
-            /*
-             4) Printing the player position with dice roll count and player final position
-             */
-            System.out.println("player position after: " + diceRollCount + " is " + playerPosition);
+            count++;
         }
-        System.out.println("Final position " +playerPosition);
+
+        System.out.println();
+
+        System.out.println("Total number of dice throws made by  player1 is: " + count);
+
+        if (player1position == 100) {
+            System.out.println(player1 + " is the winner ");
+        } else {
+            System.out.println(player2 + " is the winner ");
+        }
+
     }
 }
